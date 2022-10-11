@@ -3,6 +3,10 @@
 <head>
   <title>SVG to PNG Converter - Devtools</title>
   <style>
+    *{
+      margin: 0px;
+      padding: 0px;
+    }
     #paste_svg {
       display: block;
       margin-bottom: 10px;
@@ -13,12 +17,33 @@
       margin-top: 10px;
       margin-bottom: 20px;
     }
+
+    footer {
+      position: fixed;
+      bottom: 0px;
+      width: 100%;
+      margin-bottom: 12px;
+      background-color: white;
+    }
+
+    footer>p {
+      padding: 10px;
+      font-size: 18px;
+      margin: 0 auto;
+      max-width: 70%;
+      text-align: center;
+    }
+
+    #canvas_png{
+      margin-bottom: 210px;
+    }
   </style>
 </head>
 
 <body bgcolor="#E6E6FA">
   <h1>
-    <a href="http://mybyways.com/blog/convert-svg-to-png-using-your-browser">myByways SVG to PNG Converter - atualizador por Ulisses Hen</a>
+    <a href="http://mybyways.com/blog/convert-svg-to-png-using-your-browser">myByways SVG to PNG Converter - atualizador
+      por Ulisses Hen</a>
   </h1>
   <button id="paste_svg">Paste SVG</button>
   <textarea id="svg_text" rows="8" cols="70"></textarea>
@@ -28,56 +53,63 @@
   Width: <input id="w" type="number" max="9999"></input>
   Height: <input id="h" type="number" max="9999"></input><br />
   <button id="s">Generate PNG</button><br /><br />
-  <canvas id="c"></canvas>
-
-  <script>
-    var text = document.getElementById('svg_text');
-
-
-    document.getElementById('paste_svg')
-      .addEventListener('click', () => {
-        navigator.clipboard.readText().then((clipText) =>
-          document.getElementById("svg_text").value = clipText);
-      });
-    /* SVG to PNG (c) 2017 CY Wong / myByways.com */
-    text.wrap = 'off';
-    var svg = null;
-    var width = document.getElementById('w');
-    var height = document.getElementById('h');
-    document.getElementById('load_svg').addEventListener('click', function () {
-      var div = document.getElementById('d');
-      div.innerHTML = text.value;
-      svg = div.querySelector('svg');
-      width.value = svg.getBoundingClientRect().width;
-      height.value = svg.getBoundingClientRect().height;
-    });
-    document.getElementById('s').addEventListener('click', function () {
-      var canvas = document.getElementById('c');
-      svg.setAttribute('width', width.value);
-      svg.setAttribute('height', height.value);
-      canvas.width = width.value;
-      canvas.height = height.value;
-      var data = new XMLSerializer().serializeToString(svg);
-      var win = window.URL || window.webkitURL || window;
-      var img = new Image();
-      var blob = new Blob([data], { type: 'image/svg+xml' });
-      var url = win.createObjectURL(blob);
-      img.onload = function () {
-        canvas.getContext('2d').drawImage(img, 0, 0);
-        win.revokeObjectURL(url);
-        var uri = canvas.toDataURL('image/png').replace('image/png', 'octet/stream');
-        var a = document.createElement('a');
-        document.body.appendChild(a);
-        a.style = 'display: none';
-        a.href = uri
-        a.download = (svg.id || svg.svg.getAttribute('name') || svg.getAttribute('aria-label') || 'untitled') + '.png';
-        a.click();
-        window.URL.revokeObjectURL(uri);
-        document.body.removeChild(a);
-      };
-      img.src = url;
-    });
-  </script>
+  <canvas id="canvas_png"></canvas>
+  <footer>
+    <p>E, tirando-os para fora, disse: Senhores, que é necessário que eu faça para me salvar?
+      E eles disseram: Crê no Senhor Jesus Cristo e serás salvo, tu e a tua casa.
+    </p>
+    <p class="versiculo">
+      Atos 16:30,31</p>
+  </footer>
 </body>
+<script>
+  var text = document.getElementById('svg_text');
+
+
+  document.getElementById('paste_svg')
+    .addEventListener('click', () => {
+      navigator.clipboard.readText().then((clipText) =>
+        document.getElementById("svg_text").value = clipText);
+    });
+  /* SVG to PNG (c) 2017 CY Wong / myByways.com */
+  text.wrap = 'off';
+  var svg = null;
+  var width = document.getElementById('w');
+  var height = document.getElementById('h');
+  document.getElementById('load_svg').addEventListener('click', function () {
+    var div = document.getElementById('d');
+    div.innerHTML = text.value;
+    svg = div.querySelector('svg');
+    width.value = svg.getBoundingClientRect().width;
+    height.value = svg.getBoundingClientRect().height;
+  });
+  document.getElementById('s').addEventListener('click', function () {
+    var canvas = document.getElementById('canvas_png');
+    svg.setAttribute('width', width.value);
+    svg.setAttribute('height', height.value);
+    canvas.width = width.value;
+    canvas.height = height.value;
+    var data = new XMLSerializer().serializeToString(svg);
+    var win = window.URL || window.webkitURL || window;
+    var img = new Image();
+    var blob = new Blob([data], { type: 'image/svg+xml' });
+    var url = win.createObjectURL(blob);
+    img.onload = function () {
+      canvas.getContext('2d').drawImage(img, 0, 0);
+      win.revokeObjectURL(url);
+      var uri = canvas.toDataURL('image/png').replace('image/png', 'octet/stream');
+      var a = document.createElement('a');
+      document.body.appendChild(a);
+      a.style = 'display: none';
+      a.href = uri
+      a.download = (svg.id || svg.svg.getAttribute('name') || svg.getAttribute('aria-label') || 'untitled') + '.png';
+      a.click();
+      window.URL.revokeObjectURL(uri);
+      document.body.removeChild(a);
+    };
+    img.src = url;
+  });
+</script>
+
 
 </html>
