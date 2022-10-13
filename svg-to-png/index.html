@@ -2,58 +2,27 @@
 
 <head>
   <title>SVG to PNG Converter - Devtools</title>
-  <style>
-    *{
-      margin: 0px;
-      padding: 0px;
-    }
-    #paste_svg {
-      display: block;
-      margin-bottom: 10px;
-    }
-
-    #load_svg {
-      display: block;
-      margin-top: 10px;
-      margin-bottom: 20px;
-    }
-
-    footer {
-      position: fixed;
-      bottom: 0px;
-      width: 100%;
-      margin-bottom: 12px;
-      background-color: white;
-    }
-
-    footer>p {
-      padding: 10px;
-      font-size: 18px;
-      margin: 0 auto;
-      max-width: 70%;
-      text-align: center;
-    }
-
-    #canvas_png{
-      margin-bottom: 210px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body bgcolor="#E6E6FA">
-  <h1>
-    <a href="http://mybyways.com/blog/convert-svg-to-png-using-your-browser">myByways SVG to PNG Converter - atualizado
-      por Ulisses Hen</a>
-  </h1>
-  <button id="paste_svg">Paste SVG</button>
-  <textarea id="svg_text" rows="8" cols="70"></textarea>
-  <button id="load_svg">Load SVG</button>
-  <div id="d"></div>
-  <br />
-  Width: <input id="w" type="number" max="9999"></input>
-  Height: <input id="h" type="number" max="9999"></input><br />
-  <button id="s">Generate PNG</button><br /><br />
-  <canvas id="canvas_png"></canvas>
+  <section class="container">
+
+    <h3>
+      Créditos <a href="http://mybyways.com/blog/convert-svg-to-png-using-your-browser">myByways SVG to PNG
+        Converter</a> - atualizado
+      por Ulisses Hen
+    </h3>
+    <button id="paste_svg">Paste SVG</button>
+    <textarea id="svg_text" rows="8" cols="70"></textarea>
+    <button id="load_svg">Load SVG</button>
+    <div id="d"></div>
+    <br />
+    Width: <input id="w" type="number" max="9999"></input>
+    Height: <input id="h" type="number" max="9999"></input><br />
+    <button id="s">Generate PNG</button><br /><br />
+    <canvas id="canvas_png"></canvas>
+  </section>
   <footer>
     <p>E, tirando-os para fora, disse: Senhores, que é necessário que eu faça para me salvar?
       E eles disseram: Crê no Senhor Jesus Cristo e serás salvo, tu e a tua casa.
