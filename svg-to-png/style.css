@@ -37,3 +37,9 @@ footer > p {
 .container {
     padding: 30px;
 }
+
+.dimensao .height, .dimensao .width {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

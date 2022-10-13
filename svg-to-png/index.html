@@ -16,10 +16,15 @@
     <button id="paste_svg">Paste SVG</button>
     <textarea id="svg_text" rows="8" cols="70"></textarea>
     <button id="load_svg">Load SVG</button>
+    <div class="dimensao">
+      <div class="width">
+        Width: <input id="w" type="number" max="9999"></input>
+      </div>
+      <div class="height">  
+        Height: <input id="h" type="number" max="9999"></input>
+      </div>
+    </div>
     <div id="d"></div>
-    <br />
-    Width: <input id="w" type="number" max="9999"></input>
-    Height: <input id="h" type="number" max="9999"></input><br />
     <button id="s">Generate PNG</button><br /><br />
     <canvas id="canvas_png"></canvas>
   </section>
