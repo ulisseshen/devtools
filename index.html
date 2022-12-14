@@ -102,7 +102,7 @@
       document.body.appendChild(a);
       a.style = 'display: none';
       a.href = uri
-      a.download = (svg.id || svg.svg.getAttribute('name') || svg.getAttribute('aria-label') || 'untitled') + '.png';
+      a.download = (svg.id || svg.getAttribute('name') || svg.getAttribute('aria-label') || 'untitled') + '.png';
       a.click();
       window.URL.revokeObjectURL(uri);
       document.body.removeChild(a);
