@@ -80,8 +80,8 @@
     var div = document.getElementById('d');
     div.innerHTML = text.value;
     svg = div.querySelector('svg');
-    width.value = svg.getBoundingClientRect().width;
-    height.value = svg.getBoundingClientRect().height;
+    width.value = Math.round(svg.getBoundingClientRect().width);
+    height.value = Math.round(svg.getBoundingClientRect().height);
   });
   document.getElementById('s').addEventListener('click', function () {
     var canvas = document.getElementById('canvas_png');
