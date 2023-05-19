@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 
-<body bgcolor="#E6E6FA">
+<body bgcolor="#E6E6FA" id="body-app">
   <section class="container">
 
     <h3>
@@ -13,9 +13,9 @@
         Converter</a> - atualizado
       por Ulisses Hen
     </h3>
-    <button id="paste_svg">Paste SVG</button>
-    <textarea id="svg_text" rows="8" cols="70"></textarea>
-    <button id="load_svg">Load SVG</button>
+    <button @click="pasteSvg" class="paste-svg">Paste SVG</button>
+    <textarea v-model="svgText" rows="8" cols="70"></textarea>
+    <button @click="loadSvg" class="load-svg">Load SVG</button>
     <div class="dimensao">
       <p>Tamanhos:</p>
       <div class="botoes">
@@ -31,7 +31,7 @@
         Height: <input id="h" type="number" max="9999"></input>
       </div>
     </div>
-    <div id="svg_view"></div>
+    <div v-html="svgViewHTML"></div>
     <button id="generate_png">Generate PNG</button><br /><br />
     <canvas id="canvas_png"></canvas>
   </section>
@@ -42,8 +42,17 @@
     <p class="versiculo">
       Atos 16:30,31</p>
   </footer>
+  <h1>{{ message }}</h1>
+  <button @click="reverseMessage">Reverse Message</button>
+
+  <!-- Can also be an inline expression statement -->
+  <button @click="message += '!'">Append "!"</button>
 </body>
+<script src="vue.min.js"></script>
 <script src="app.js"></script>
+
+<script src="app_vue.js">
+</script>
 
 
 </html>

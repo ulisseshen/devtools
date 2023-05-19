@@ -2,16 +2,16 @@
   margin: 0px;
   padding: 0px;
 }
-#paste_svg {
+.paste-svg {
   display: block;
   margin-bottom: 10px;
   margin-top: 20px;
 }
 
-#load_svg {
+.load-svg {
   display: block;
-  margin-top: 10px;
   margin-bottom: 20px;
+  margin-top: 10px;
 }
 
 footer {
@@ -30,10 +30,6 @@ footer > p {
   text-align: center;
 }
 
-#canvas_png {
-  margin-bottom: 210px;
-}
-
 .container {
     padding: 30px;
 }
@@ -42,4 +38,8 @@ footer > p {
     display: block;
     margin-top: 10px;
     margin-bottom: 10px;
+}
+
+body{
+  margin-bottom: 210px;
 }
